@@ -1,0 +1,39 @@
+﻿CREATE DATABASE TestDb
+
+GO
+
+use TestDb
+
+GO
+
+
+
+CREATE TABLE [dbo].[Employees](
+	[EmployeeID] [int] NOT NULL primary key,
+	[FirstName] [varchar](50) NOT NULL,
+	[LastName] [varchar](50) NOT NULL,
+	[UserName] [varchar](50) NOT NULL,
+	[Password] [varchar](50) NOT NULL
+	)
+
+
+INSERT INTO [dbo].[Employees]
+           ([EmployeeID]
+           ,[FirstName]
+           ,[LastName]
+		   ,[UserName]
+		   ,[Password]
+
+		   )
+     VALUES
+		(1,'Ken', 'SÃnchez', 'ken', '12345'),
+		(2,'Terri', 'Duffy', 'terri', '55445'),
+		(3,'Roberto','Tamburello', 'roberto', '75433'),
+		(4,'Rob','Walters', 'rob', '54544'),
+		(5,'Gail','Erickson', 'gail', '43111'),
+		(6,'Jossef','Goldberg', 'jossef', '44422'),
+		(7,'Dylan','Miller', 'dylan', '00223'),
+		(8,'Diane','Margheim', 'diane', '32322'),
+		(9,'Gigi','Matthew', 'gigi', '43333'),
+		(10,'Michael','Raheem', 'michael', '87878')
+GO
