@@ -1,4 +1,5 @@
-﻿using IServices;
+﻿using AuthenticationHandlers;
+using IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models;
@@ -24,8 +25,9 @@ namespace WebApi.Controllers
         }
 
         // GET http://localhost:5000/api/orders
-        
-       // [HttpGet]
+
+        // [HttpGet]
+        [Authorize(Policy = "Adult")]
         public IActionResult Get()
         {
             IEnumerable<Order> orders = null;
@@ -48,10 +50,33 @@ namespace WebApi.Controllers
             {
                 return Unauthorized();
             }
-           
+
         }
 
-        [Authorize(Roles = "Creator")]
+        // https://docs.microsoft.com/pl-pl/aspnet/core/security/authorization/resourcebased?view=aspnetcore-5.0
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id, [FromServices] Microsoft.AspNetCore.Authorization.IAuthorizationService authorizationService)
+        {
+            Order order = orderService.Get(id);
+
+            var authorizationResult = await authorizationService.AuthorizeAsync(User, order, new TheSameAuthorRequirement());
+
+            if (authorizationResult.Succeeded)
+            {
+                return Ok(order);
+            }
+            else if (User.Identity.IsAuthenticated)
+            {
+                return Forbid();
+            }
+            else
+            {
+                return Challenge();
+            }
+        }
+
+        [Authorize(Policy = "Creator")]
         [HttpPost]
         public IActionResult Post(Order order)
         {

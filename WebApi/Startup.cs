@@ -4,6 +4,7 @@ using Fakers;
 using FakeServices;
 using IServices;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,6 +17,7 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace WebApi
@@ -32,16 +34,33 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IOrderService, FakeOrderService>();
-            services.AddScoped<Faker<Order>, OrderFaker>();
-            services.AddScoped<Faker<Customer>, CustomerFaker>();
-            services.AddScoped<IAuthorizationService, CustomerAuthorizationService>();
-            services.AddScoped<ICustomerService, FakeCustomerService>();
+            services.AddSingleton<IOrderService, FakeOrderService>();
+            services.AddSingleton<Faker<Order>, OrderFaker>();
+            services.AddSingleton<Faker<Customer>, CustomerFaker>();
+            services.AddSingleton<IServices.IAuthorizationService, CustomerAuthorizationService>();
+            services.AddSingleton<ICustomerService, FakeCustomerService>();
 
             services.AddScoped<IClaimsTransformation, CustomerClaimsTransformation>();
 
             services.AddAuthentication(defaultScheme: "Basic")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null);
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Creator", policy =>
+                {
+                   policy.RequireAuthenticatedUser();
+                   policy.RequireRole("Creator");
+                });
+
+                options.AddPolicy("Adult", policy =>
+                {
+                    policy.RequireAge(26);
+                });
+            });
+
+            services.AddScoped<IAuthorizationHandler, MinimumAgeHandler>();
+            services.AddScoped<IAuthorizationHandler, OrderAuthorizationHandler>();
 
             services.AddControllers();
         }

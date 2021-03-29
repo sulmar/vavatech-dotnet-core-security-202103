@@ -36,6 +36,7 @@ namespace AuthenticationHandlers
             identity.AddClaim(new Claim(ClaimTypes.MobilePhone, customer.PhoneNumber));
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, customer.Username));
             identity.AddClaim(new Claim(ClaimTypes.Name, customer.FullName));
+            identity.AddClaim(new Claim(ClaimTypes.DateOfBirth, customer.DateOfBirth.ToString()));
 
             identity.AddClaim(new Claim(ClaimTypes.Role, "Creator"));
             identity.AddClaim(new Claim(ClaimTypes.Role, "Administrator"));
