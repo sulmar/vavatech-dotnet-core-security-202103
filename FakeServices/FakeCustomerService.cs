@@ -21,6 +21,11 @@ namespace FakeServices
             return customers;
         }
 
+        public Customer Get(string username, string password)
+        {
+            return customers.SingleOrDefault(c => c.Username == username && c.HashedPassword == password);
+        }
+
         public IEnumerable<Customer> GetActive()
         {
             return customers.Where(c => !c.IsRemoved).ToList();
