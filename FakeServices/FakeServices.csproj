@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="33.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\IServices\IServices.csproj" />
   </ItemGroup>
 

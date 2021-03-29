@@ -1,6 +1,5 @@
 ﻿using Bogus;
 using Models;
-using System;
 
 namespace Fakers
 {
@@ -9,6 +8,8 @@ namespace Fakers
     {
         public CustomerFaker()
         {
+            UseSeed(1);
+            StrictMode(true);
             RuleFor(p => p.Id, f => f.IndexFaker);
             RuleFor(p => p.FirstName, f => f.Person.FirstName);
             RuleFor(p => p.LastName, f => f.Person.LastName);
@@ -20,6 +21,4 @@ namespace Fakers
             RuleFor(p => p.IsRemoved, f => f.Random.Bool(0.2f));
         }
     }
-
-    
 }
