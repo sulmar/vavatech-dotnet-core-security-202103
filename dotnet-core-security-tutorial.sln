@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeServices", "FakeService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakers", "Fakers\Fakers.csproj", "{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{1193F389-38D6-4F35-B86F-4EAA0CBF7B5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1193F389-38D6-4F35-B86F-4EAA0CBF7B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1193F389-38D6-4F35-B86F-4EAA0CBF7B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1193F389-38D6-4F35-B86F-4EAA0CBF7B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1193F389-38D6-4F35-B86F-4EAA0CBF7B5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C} = {B7CF93A1-7968-4ECF-9847-D875ADB68471}
 		{4A875CBF-E168-49B6-B696-E629EF70D3C1} = {B7CF93A1-7968-4ECF-9847-D875ADB68471}
 		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2} = {B7CF93A1-7968-4ECF-9847-D875ADB68471}
+		{1193F389-38D6-4F35-B86F-4EAA0CBF7B5C} = {B7CF93A1-7968-4ECF-9847-D875ADB68471}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D6D6703-69C5-4A19-92CA-2FB805D290F5}
