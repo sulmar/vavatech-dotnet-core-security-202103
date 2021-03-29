@@ -3,13 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSSAttack", "XSSAttack\XSSAttack.csproj", "{A47C576D-807E-4B15-A3B7-E90AED7D9BB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XSSAttack", "XSSAttack\XSSAttack.csproj", "{A47C576D-807E-4B15-A3B7-E90AED7D9BB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlInjection", "SqlInjection\SqlInjection.csproj", "{558C9703-AE86-4EC6-9015-0083834B4FF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlInjection", "SqlInjection\SqlInjection.csproj", "{558C9703-AE86-4EC6-9015-0083834B4FF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadFiles", "UploadFiles\UploadFiles.csproj", "{C3AD9278-94E0-4FB3-90D9-31B91F6F62EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UploadFiles", "UploadFiles\UploadFiles.csproj", "{C3AD9278-94E0-4FB3-90D9-31B91F6F62EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSRFAttack", "CSRFAttack\CSRFAttack.csproj", "{ED7C4B8A-D740-4969-9D37-105ED102CEBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSRFAttack", "CSRFAttack\CSRFAttack.csproj", "{ED7C4B8A-D740-4969-9D37-105ED102CEBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{B7CF93A1-7968-4ECF-9847-D875ADB68471}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{F8DEF678-BD8C-4DDC-BCFB-177FFE3E1C64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IServices", "IServices\IServices.csproj", "{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeServices", "FakeServices\FakeServices.csproj", "{4A875CBF-E168-49B6-B696-E629EF70D3C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakers", "Fakers\Fakers.csproj", "{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +43,31 @@ Global
 		{ED7C4B8A-D740-4969-9D37-105ED102CEBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED7C4B8A-D740-4969-9D37-105ED102CEBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED7C4B8A-D740-4969-9D37-105ED102CEBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8DEF678-BD8C-4DDC-BCFB-177FFE3E1C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8DEF678-BD8C-4DDC-BCFB-177FFE3E1C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8DEF678-BD8C-4DDC-BCFB-177FFE3E1C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8DEF678-BD8C-4DDC-BCFB-177FFE3E1C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A875CBF-E168-49B6-B696-E629EF70D3C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A875CBF-E168-49B6-B696-E629EF70D3C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A875CBF-E168-49B6-B696-E629EF70D3C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A875CBF-E168-49B6-B696-E629EF70D3C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8DEF678-BD8C-4DDC-BCFB-177FFE3E1C64} = {B7CF93A1-7968-4ECF-9847-D875ADB68471}
+		{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C} = {B7CF93A1-7968-4ECF-9847-D875ADB68471}
+		{4A875CBF-E168-49B6-B696-E629EF70D3C1} = {B7CF93A1-7968-4ECF-9847-D875ADB68471}
+		{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2} = {B7CF93A1-7968-4ECF-9847-D875ADB68471}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D6D6703-69C5-4A19-92CA-2FB805D290F5}
