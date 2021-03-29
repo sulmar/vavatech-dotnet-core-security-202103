@@ -55,6 +55,15 @@ namespace AuthenticationHandlers
             }
 
             ClaimsIdentity identity = new ClaimsIdentity(Scheme.Name);
+
+            identity.AddClaim(new Claim("http://vavatech/pl2020/03/identity/claims/licence_category", "B"));
+            identity.AddClaim(new Claim("http://vavatech/pl2020/03/identity/claims/licence_category", "A"));
+            identity.AddClaim(new Claim(ClaimTypes.Email, customer.Email));
+            identity.AddClaim(new Claim(ClaimTypes.MobilePhone, customer.PhoneNumber));
+            identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, customer.Username));
+            identity.AddClaim(new Claim(ClaimTypes.Name, customer.FullName));
+
+
             ClaimsPrincipal principal = new ClaimsPrincipal(identity);
 
             AuthenticationTicket authenticationTicket = new AuthenticationTicket(principal, Scheme.Name);
