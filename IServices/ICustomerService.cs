@@ -9,6 +9,8 @@ namespace IServices
         IEnumerable<Customer> Get();
         IEnumerable<Customer> GetActive();
         Customer Get(string username, string password);
+
+        Customer Get(string username);
     }
 
 }

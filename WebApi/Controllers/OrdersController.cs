@@ -28,9 +28,19 @@ namespace WebApi.Controllers
        // [HttpGet]
         public IActionResult Get()
         {
+            IEnumerable<Order> orders = null;
+
             if (this.User.Identity.IsAuthenticated)
             {
-                IEnumerable<Order> orders = orderService.Get();
+                if (this.User.IsInRole("Administrator"))
+                {
+                    orders = orderService.Get();
+                }
+                else
+                {
+                    orders = orderService.Get(User.Identity.Name);
+                }
+
 
                 return Ok(orders);
             }
@@ -41,6 +51,7 @@ namespace WebApi.Controllers
            
         }
 
+        [Authorize(Roles = "Creator")]
         [HttpPost]
         public IActionResult Post(Order order)
         {

@@ -38,6 +38,8 @@ namespace WebApi
             services.AddScoped<IAuthorizationService, CustomerAuthorizationService>();
             services.AddScoped<ICustomerService, FakeCustomerService>();
 
+            services.AddScoped<IClaimsTransformation, CustomerClaimsTransformation>();
+
             services.AddAuthentication(defaultScheme: "Basic")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null);
 
