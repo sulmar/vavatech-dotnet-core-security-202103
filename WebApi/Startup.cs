@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -83,6 +84,15 @@ namespace WebApi
 
             services.AddScoped<IAuthorizationHandler, MinimumAgeHandler>();
             services.AddScoped<IAuthorizationHandler, OrderAuthorizationHandler>();
+
+
+            services.Configure<BCryptPasswordHasherOptions>(options =>
+            {
+                options.WorkFactor = 10;
+                options.EnhancedEntropy = false;
+            });
+
+            services.AddSingleton<IPasswordHasher<Customer>, BCryptPasswordHasher<Customer>>();
 
             services.AddControllers();
         }
