@@ -2,6 +2,7 @@ using AuthenticationHandlers;
 using Bogus;
 using Fakers;
 using FakeServices;
+using Ganss.XSS;
 using IServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -93,6 +94,9 @@ namespace WebApi
             });
 
             services.AddSingleton<IPasswordHasher<Customer>, BCryptPasswordHasher<Customer>>();
+
+            // dotnet add package HtmlSanitizer
+            services.AddSingleton<IHtmlSanitizer, HtmlSanitizer>();
 
             services.AddControllers();
         }

@@ -1,4 +1,5 @@
 ﻿using AuthenticationHandlers;
+using Ganss.XSS;
 using IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ namespace WebApi.Controllers
 {
     [Authorize]
     [Route("api/orders")]
+    [ApiController]
     public class OrdersController : ControllerBase
     {
         private readonly IOrderService orderService;
@@ -78,11 +80,17 @@ namespace WebApi.Controllers
 
         [Authorize(Policy = "Creator")]
         [HttpPost]
-        public IActionResult Post(Order order)
+        public IActionResult Post(Order order, [FromServices] IHtmlSanitizer sanitizer)
         {
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);
+
+            // https://xss.ganss.org/
+            order.Note = sanitizer.Sanitize(order.Note);
+
             string email = User.FindFirstValue(ClaimTypes.Email);
 
-            Trace.WriteLine($"Send email to {email}");
+            Trace.WriteLine($"Send email to {email} {order.Note}");
 
             return Ok(order);
         }

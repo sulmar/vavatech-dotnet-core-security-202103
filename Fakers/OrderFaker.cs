@@ -16,6 +16,7 @@ namespace Fakers
             RuleFor(p => p.OrderDate, f => f.Date.Past());
             RuleFor(p => p.Customer, f => f.PickRandom(customerService.Get()));
             RuleFor(p => p.TotalAmount, f => Math.Round(f.Random.Decimal(1, 1000), 2));
+            Ignore(p => p.Note);
         }
     }
 }
