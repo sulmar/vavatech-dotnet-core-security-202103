@@ -18,6 +18,16 @@ namespace WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                //.ConfigureAppConfiguration((context, options) =>
+                //{
+                //    string environmentName = context.HostingEnvironment.EnvironmentName;
+
+                //    options.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                //    options.AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true);                    
+                //    options.AddXmlFile("appsettings.xml", optional: true, reloadOnChange: true);
+
+                //    // https://github.com/mcrio/Configuration.Provider.Docker.Secrets
+                //})
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

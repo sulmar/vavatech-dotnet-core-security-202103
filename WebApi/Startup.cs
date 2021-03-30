@@ -45,24 +45,24 @@ namespace WebApi
 
             services.AddScoped<IClaimsTransformation, CustomerClaimsTransformation>();
 
-            //services.AddAuthentication(defaultScheme: "Basic")
-            //    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null);\
+            services.AddAuthentication(defaultScheme: "Basic")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null);
 
 
             // dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtTokenServiceOptions:SecretKey"]))
-                    };
-                });
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+            //    .AddJwtBearer(options =>
+            //    {
+            //        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            //        {
+            //            ValidateIssuerSigningKey = true,
+            //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtTokenServiceOptions:SecretKey"]))
+            //        };
+            //    });
 
             services.AddScoped<ITokenService, JwtTokenService>();
             services.Configure<JwtTokenServiceOptions>(Configuration.GetSection("JwtTokenServiceOptions"));
