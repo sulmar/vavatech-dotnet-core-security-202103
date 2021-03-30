@@ -30,6 +30,7 @@ namespace CSRFAttack.Controllers
         }
 
         [HttpPost]
+      //  [ValidateAntiForgeryToken]
         public IActionResult Create(BankTransfer bankTransfer)
         {
             bankTransferService.Add(bankTransfer);

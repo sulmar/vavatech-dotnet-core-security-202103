@@ -95,7 +95,7 @@ namespace WebApi
 
             services.AddSingleton<IPasswordHasher<Customer>, BCryptPasswordHasher<Customer>>();
 
-            // dotnet add package HtmlSanitizer
+            // dotnet add package HtmlSanitizer 
             services.AddSingleton<IHtmlSanitizer, HtmlSanitizer>();
 
             services.AddControllers();
@@ -110,6 +110,20 @@ namespace WebApi
             }
 
             app.UseHttpsRedirection();
+
+
+            app.Use(async (context, next) =>
+            {
+                // context.Response.Headers.Add("X-Frame-Options", "DENY");
+
+                context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+
+                context.Response.Headers.Add("X-Frame-Options", "ALLOW-FROM https://myotherdomain.com");
+
+                await next();
+
+                
+            });
 
             app.UseRouting();
 

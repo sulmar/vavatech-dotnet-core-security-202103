@@ -10,6 +10,7 @@ using UploadFiles.IServices;
 
 namespace UploadFiles.Pages.Attachments
 {
+    [RequestSizeLimit(100)]
     public class UploadModel : PageModel
     {
         private readonly IAttachmentRepository attachmentRepository;
@@ -27,8 +28,15 @@ namespace UploadFiles.Pages.Attachments
 
         }
 
+        
         public async Task<IActionResult> OnPost()
         {
+
+            if (FormFile.ContentType == "application/pdf")
+            {
+                
+            }
+
             byte[] attachment = await FormFile.GetBytes();
 
             attachmentRepository.Add(attachment);

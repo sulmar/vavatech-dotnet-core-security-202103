@@ -13,17 +13,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSRFAttack", "CSRFAttack\CS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{B7CF93A1-7968-4ECF-9847-D875ADB68471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{F8DEF678-BD8C-4DDC-BCFB-177FFE3E1C64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{F8DEF678-BD8C-4DDC-BCFB-177FFE3E1C64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IServices", "IServices\IServices.csproj", "{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IServices", "IServices\IServices.csproj", "{DE8FAFBF-A4FC-4220-A863-56E4A71EAC3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeServices", "FakeServices\FakeServices.csproj", "{4A875CBF-E168-49B6-B696-E629EF70D3C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeServices", "FakeServices\FakeServices.csproj", "{4A875CBF-E168-49B6-B696-E629EF70D3C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakers", "Fakers\Fakers.csproj", "{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fakers", "Fakers\Fakers.csproj", "{FD71D11F-77D6-4B7D-8732-7DDD0CA557B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{1193F389-38D6-4F35-B86F-4EAA0CBF7B5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{1193F389-38D6-4F35-B86F-4EAA0CBF7B5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationHandlers", "AuthenticationHandlers\AuthenticationHandlers.csproj", "{CE2F3AFE-0E7E-4E8B-91CA-7BCD68451375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationHandlers", "AuthenticationHandlers\AuthenticationHandlers.csproj", "{CE2F3AFE-0E7E-4E8B-91CA-7BCD68451375}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{F15FE1A9-1C14-4C5B-A9D2-8ED7D063EF12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{CE2F3AFE-0E7E-4E8B-91CA-7BCD68451375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE2F3AFE-0E7E-4E8B-91CA-7BCD68451375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE2F3AFE-0E7E-4E8B-91CA-7BCD68451375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15FE1A9-1C14-4C5B-A9D2-8ED7D063EF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15FE1A9-1C14-4C5B-A9D2-8ED7D063EF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15FE1A9-1C14-4C5B-A9D2-8ED7D063EF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15FE1A9-1C14-4C5B-A9D2-8ED7D063EF12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

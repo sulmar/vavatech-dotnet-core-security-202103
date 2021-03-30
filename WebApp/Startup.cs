@@ -1,9 +1,6 @@
-using CSRFAttack.IServices;
-using CSRFAttack.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CSRFAttack
+namespace WebApp
 {
     public class Startup
     {
@@ -26,13 +23,7 @@ namespace CSRFAttack
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IBankTransferService, FakeBankTransferService>();
-
-            // services.AddDataProtection(options =>
-            // {
-            // });
-
-            services.AddControllersWithViews(options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()));
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,12 +35,48 @@ namespace CSRFAttack
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
+
+          //  app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            // dotnet add package NWebsec.AspNetCore.Middleware
+
+            app.UseXfo(options => options.Deny());
+
+            // no-sniff 
+            app.UseXContentTypeOptions();
+
+            app.UseCsp(opts => opts
+                .BlockAllMixedContent()
+                .StyleSources(s => s.Self())
+                .StyleSources(s => s.UnsafeInline())
+                .FontSources(s => s.Self())
+                .FormActions(s => s.Self())
+                .FrameAncestors(s => s.Self())
+                .ImageSources(s => s.Self())
+                .ScriptSources(s => s.Self())
+);
+
+
+            /*
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("X-Frame-Options", "DENY");
+
+                // context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+
+                // context.Response.Headers.Add("X-Frame-Options", "ALLOW-FROM https://myotherdomain.com");
+
+                await next();
+
+
+            });
+
+            */
 
             app.UseRouting();
 
@@ -57,9 +84,7 @@ namespace CSRFAttack
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

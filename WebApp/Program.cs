@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UploadFiles
+namespace WebApp
 {
     public class Program
     {
@@ -19,12 +19,8 @@ namespace UploadFiles
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
-                {                      
-                    webBuilder.UseKestrel(options =>
-                    {
-                        options.Limits.MaxRequestBodySize = 100;
-                    });
-
+                {
+                   // webBuilder.UseKestrel(options => options.AddServerHeader = false);
                     webBuilder.UseStartup<Startup>();
                 });
     }
