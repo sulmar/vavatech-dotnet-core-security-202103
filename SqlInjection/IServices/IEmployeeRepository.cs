@@ -11,5 +11,6 @@ namespace SqlInjection.IServices
         IEnumerable<Employee> Get(string searchString);
         Employee Get(int id);
         Employee Validate(string username, string password);
+        void Add(Employee employee);
     }
 }

@@ -52,11 +52,15 @@ namespace SqlInjection.DbServices
 
         public Employee Validate(string username, string password)
         {
-            string sql = "SELECT [EmployeeID], FirstName, LastName FROM [dbo].[Employees] WHERE [UserName] = '" + username + "'" + " AND [Password] = '" + password + "'";
+            // string sql = "SELECT [EmployeeID], FirstName, LastName FROM [dbo].[Employees] WHERE [UserName] = '" + username + "'" + " AND [Password] = '" + password + "'";
+
+            string sql = "SELECT [EmployeeID], FirstName, LastName FROM [dbo].[Employees] WHERE [UserName] = @UserName AND [Password] = @Password";
 
             Employee employee = null;
 
             SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@UserName", username);
+            command.Parameters.AddWithValue("@Password", password);
 
             connection.Open();
 
@@ -74,11 +78,14 @@ namespace SqlInjection.DbServices
 
         public IEnumerable<Employee> Get(string searchString = "")
         {
-            string sql = "SELECT [EmployeeID], FirstName, LastName FROM [dbo].[Employees] WHERE FirstName = '" + searchString + "'";
+            // string sql = "SELECT [EmployeeID], FirstName, LastName FROM [dbo].[Employees] WHERE FirstName = '" + searchString + "'";
+
+            string sql = "SELECT [EmployeeID], FirstName, LastName FROM [dbo].[Employees] WHERE FirstName = @searchString";
 
             IList<Employee> employees = new List<Employee>();
 
             SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@searchString", searchString);
 
             connection.Open();
 
@@ -92,6 +99,21 @@ namespace SqlInjection.DbServices
             connection.Close();
 
             return employees;
+        }
+
+        public void Add(Employee employee)
+        {
+            // string sql = $"INSERT INTO  [dbo].[Employees] VALUES ({employee.FirstName}, {employee.LastName})";
+
+            string sql = "INSERT INTO [dbo].[Employees] VALUES (@FirstName, @LastName)";
+
+            SqlCommand command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@FistName", employee.FirstName);
+            command.Parameters.AddWithValue("@LastName", employee.LastName);
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
         }
     }
 }

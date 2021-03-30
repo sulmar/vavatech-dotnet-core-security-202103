@@ -20,7 +20,7 @@ namespace SqlInjection.Controllers
         }
 
         // GET: EmployeesController
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString = "")
         {
             var employees = employeeRepository.Get(searchString);
 
